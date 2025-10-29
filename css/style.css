@@ -1,0 +1,149 @@
+/* NOTE: fonts, colors and sizes picked with https://www.realtimecolors.com/ */
+/* Here is the template: https://www.realtimecolors.com/?colors=e8edeb-0d110f-aac0b7-485160-6c6e93&fonts=Playfair%20Display-IBM%20Plex%20Sans */
+
+@import url('https://fonts.googleapis.com/css?family=Playfair%20Display:700|IBM%20Plex%20Sans:400');
+
+:root {
+    --gap: 1rem;
+    --text: #e8edeb;
+    --background: #0d110f;
+    --primary: #aac0b7;
+    --secondary: #485160;
+    --accent: #6c6e93;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'IBM Plex Sans';
+    font-weight: 400;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Playfair Display';
+  font-weight: 700;
+}
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 4.210rem; /* 67.36px */}
+
+h2 {font-size: 3.158rem; /* 50.56px */}
+
+h3 {font-size: 2.369rem; /* 37.92px */}
+
+h4 {font-size: 1.777rem; /* 28.48px */}
+
+h5 {font-size: 1.333rem; /* 21.28px */}
+
+small {font-size: 0.750rem; /* 12px */}
+
+main {
+    display: grid;
+    margin-top: var(--gap);
+    margin-left: var(--gap);
+    margin-right: var(--gap);
+    gap: var(--gap);
+    grid-template-columns: 1fr;
+}
+
+.reel-frame {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+    grid-template-areas: "shot";
+}
+
+.reel-left, .reel-right {
+    display: none;
+    gap: var(--gap);
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.reel-left {
+    grid-area: left;
+}
+
+.reel-right {
+    grid-area: right;
+}
+
+.reel-perforation {
+    background-color: var(--text);
+    color: var(--background);
+    border-radius: calc(var(--gap) / 2);
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filled {
+    background-color: var(--text);
+    color: var(--background);
+    border-radius: calc(var(--gap) / 2);
+}
+
+.bordered {
+    border: 1px solid var(--primary);
+    border-radius: calc(var(--gap) / 2);
+}
+
+.reel-shot {
+    grid-area: shot;
+
+    /* background-color: var(--text); */
+    /* color: var(--background); */
+
+    display: grid;
+    gap: var(--gap);
+}
+
+@media (width >= 40rem) {
+    /* sm (640px) */
+}
+
+@media (width >= 48rem) {
+    /* md (768px) */
+    main {
+        grid-template-columns: 0.25fr 4fr 0.25fr;
+    }
+
+    .reel-left, .reel-right {
+        display: grid;
+    }
+
+    .reel-frame {
+        grid-column: 1 / span 3;
+        grid-template-areas: "left shot right";
+    }
+
+    .reel-shot {
+        aspect-ratio: 1.85 / 1;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+    }
+}
+
+@media (width >= 64rem) {
+    /* lg (1024px) */
+    main {
+        grid-template-columns: 1fr 0.3fr 4fr 0.3fr 1fr;
+    }
+
+    .reel-frame {
+        grid-column: 2 / span 3;
+    }
+}
+
+@media (width >= 80rem) {
+    /* xl (1280px) */
+}
+
+@media (width >= 96rem) {
+    /* 2xl (1536px) */
+}
