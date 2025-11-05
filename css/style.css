@@ -145,6 +145,16 @@ nav#nav {
     clip-path: var(--clip-mask-border);
 }
 
+.reel-subject-input {
+    padding: var(--gap);
+    font-size: 2em;
+}
+
+.reel-input {
+    padding: var(--gap);
+    font-size: 1em;
+}
+
 .center-content {
     display: flex;
     justify-content: center;
