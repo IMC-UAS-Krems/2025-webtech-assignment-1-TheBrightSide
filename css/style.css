@@ -4,40 +4,75 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair%20Display:700|IBM%20Plex%20Sans:400');
 
 :root {
+    /* generated with https://pixelcorners.lukeb.co.uk/?radius=6&multiplier=3 */
+    --clip-mask-border: polygon(
+        0px calc(100% - 12px),
+        3px calc(100% - 12px),
+        3px calc(100% - 6px),
+        6px calc(100% - 6px),
+        6px calc(100% - 3px),
+        12px calc(100% - 3px),
+        12px 100%,
+        calc(100% - 12px) 100%,
+        calc(100% - 12px) calc(100% - 3px),
+        calc(100% - 6px) calc(100% - 3px),
+        calc(100% - 6px) calc(100% - 6px),
+        calc(100% - 3px) calc(100% - 6px),
+        calc(100% - 3px) calc(100% - 12px),
+        100% calc(100% - 12px),
+        100% 12px,
+        calc(100% - 3px) 12px,
+        calc(100% - 3px) 6px,
+        calc(100% - 6px) 6px,
+        calc(100% - 6px) 3px,
+        calc(100% - 12px) 3px,
+        calc(100% - 12px) 0px,
+        12px 0px,
+        12px 3px,
+        6px 3px,
+        6px 6px,
+        3px 6px,
+        3px 12px,
+        0px 12px
+    );
+
     --gap: 1rem;
-    --text: #e8edeb;
-    --background: #0d110f;
-    --primary: #aac0b7;
-    --secondary: #485160;
-    --accent: #6c6e93;
+
+    --text: #ece8e3;
+    --background: #0c0a07;
+    --primary: #F3DFC1;
+    --secondary: #85622d;
+    --accent: #cc8f33;
 }
 
 body {
     background-color: var(--background);
     color: var(--text);
     font-family: 'IBM Plex Sans';
+    /* font-family: 'Jersey 10'; */
     font-weight: 400;
     margin: 0;
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: 'Playfair Display';
-  font-weight: 700;
+    font-family: 'Playfair Display';
+    /* font-family: 'Jacquard 12'; */
+    font-weight: 700;
 }
 
 html {font-size: 100%;} /* 16px */
 
-h1 {font-size: 4.210rem; /* 67.36px */}
+h1 {font-size: 3.053rem; /* 48.8px */}
 
-h2 {font-size: 3.158rem; /* 50.56px */}
+h2 {font-size: 2.442rem; /* 39.04px */}
 
-h3 {font-size: 2.369rem; /* 37.92px */}
+h3 {font-size: 1.954rem; /* 31.2px */}
 
-h4 {font-size: 1.777rem; /* 28.48px */}
+h4 {font-size: 1.563rem; /* 24.96px */}
 
-h5 {font-size: 1.333rem; /* 21.28px */}
+h5 {font-size: 1.250rem; /* 20px */}
 
-small {font-size: 0.750rem; /* 12px */}
+small {font-size: 0.800rem; /* 12.8px */}
 
 main {
     display: grid;
@@ -46,6 +81,39 @@ main {
     margin-right: var(--gap);
     gap: var(--gap);
     grid-template-columns: 1fr;
+}
+
+nav ul#nav-list li a {
+    color: var(--text);
+}
+
+nav ul#nav-list li {
+    text-align: center;
+}
+
+nav ul#nav-list {
+    grid-template-columns: repeat(5, 1fr);
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+nav#nav {
+    position: sticky;
+    top: 0px;
+
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+
+    margin: calc(var(--gap) * -1) calc(var(--gap) * -1) 0px;
+    padding: calc(var(--gap));
+
+    border-bottom: calc(var(--gap) / 8) dashed var(--primary);
+    background-color: var(--background);
+
+    z-index: 1;
 }
 
 .reel-frame {
@@ -71,26 +139,57 @@ main {
 }
 
 .reel-perforation {
-    background-color: var(--text);
+    background-color: var(--primary);
     color: var(--background);
-    border-radius: calc(var(--gap) / 2);
+    /* border-radius: calc(var(--gap) / 2); */
+    clip-path: var(--clip-mask-border);
 }
 
 .center-content {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .filled {
-    background-color: var(--text);
+    background-color: var(--primary);
     color: var(--background);
-    border-radius: calc(var(--gap) / 2);
+    /* border-radius: calc(var(--gap) / 2); */
+    clip-path: var(--clip-mask-border);
 }
 
 .bordered {
-    border: 1px solid var(--primary);
-    border-radius: calc(var(--gap) / 2);
+    border: calc(var(--gap) / 3) dashed var(--primary);
+    /* border-radius: calc(var(--gap) / 2); */
+    clip-path: var(--clip-mask-border);
+}
+
+.gallery-img {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+.no-antialiasing {
+    /* source https://stackoverflow.com/questions/14068103/disable-antialising-when-scaling-images */
+
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;                 /* Universal support since 2021   */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+}
+
+.icon {
+    width: 100%;
+    height: auto;
+    max-width: 5em;
+    padding-top: var(--gap);
+    padding-bottom: var(--gap);
 }
 
 .reel-shot {
@@ -127,6 +226,10 @@ main {
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(6, 1fr);
     }
+
+    .bordered {
+        border: calc(var(--gap) / 2) dashed var(--primary);
+    }
 }
 
 @media (width >= 64rem) {
@@ -146,4 +249,17 @@ main {
 
 @media (width >= 96rem) {
     /* 2xl (1536px) */
+    html {font-size: 100%;} /* 16px */
+
+    h1 {font-size: 4.210rem; /* 67.36px */}
+
+    h2 {font-size: 3.158rem; /* 50.56px */}
+
+    h3 {font-size: 2.369rem; /* 37.92px */}
+
+    h4 {font-size: 1.777rem; /* 28.48px */}
+
+    h5 {font-size: 1.333rem; /* 21.28px */}
+
+    small {font-size: 0.750rem; /* 12px */}
 }
