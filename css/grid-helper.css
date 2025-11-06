@@ -1,6 +1,18 @@
 /* Utility classes used for easily creating grid UIs */
 /* Inspired by Tailwind CSS */
 
+.grid {
+    display: grid;
+}
+
+.subgrid-col {
+    grid-template-columns: subgrid;
+}
+
+.subgrid-row {
+    grid-template-rows: subgrid;
+}
+
 .row-span-full {
     grid-row: 1 / -1;
 }

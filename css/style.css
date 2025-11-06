@@ -173,6 +173,11 @@ nav#nav {
     flex-direction: column;
 }
 
+.center-content-vertically {
+    display: flex;
+    align-items: center;
+}
+
 .filled {
     background-color: var(--primary);
     color: var(--background);
